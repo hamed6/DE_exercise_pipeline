@@ -1,19 +1,28 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import argparse
+import os
 from time import time
-from sqlalchemy import create_engine
+
 import pandas as pd
 import pyarrow.parquet as pq
+from sqlalchemy import create_engine
 
+def main(user_args):
+    user_name = user_args.user_name
+    password = user_args.password
+    host= user_args.host
+    port= user_args.port
+    db_name= user_args.db_name
+    table_name= user_args.table_name
+    url= user_args.url
+    file_name= 'sample.csv'
+    
+    os.system(f"wget {url} -O {file_name}")
+    
 
-def main():
-    file = './yellow_tripdata_2022-01.parquet'
-    df=pd.read_parquet(file, engine= 'pyarrow')
-    df.to_csv('taxi_data.csv')
-
-
-    engine=create_engine('postgresql://root:root@localhost:5432/dump_data')
+    engine=create_engine(f'postgresql://{user_name}:{password}@{host}:{port}/{db_name}')
     engine.connect()
 
     df_iterate=pd.read_csv('./taxi_data.csv', iterator=True, chunksize=100000)
@@ -27,4 +36,18 @@ def main():
         df.to_sql(name='taxi_data', con=engine, if_exists='append')
         print(time())
 
+if __name__=="__main__":
+    # To get initial values from the user input as arguments
+    parser=argparse.ArgumentParser(description="To build ingestion")
 
+    parser.add_argument('--user_name')
+    parser.add_argument('--password')
+    parser.add_argument('--host')
+    parser.add_argument('--port')
+    parser.add_argument('--db_name')
+    parser.add_argument('--table_name')
+    parser.add_argument('--url')
+    
+    user_args=parser.parse_args()
+    
+    main(user_args)
