@@ -29,7 +29,7 @@ docker run -it \
 --name pg_database \
 postgres:13
 
-docker run -it \
+Docker run -it \
 -e PGADMIN_DEFAULT_EMAIL=user@domain.com \
 -e PGADMIN_DEFAULT_PASSWORD=root \
 -p 8080:80 \

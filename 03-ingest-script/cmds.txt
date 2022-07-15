@@ -12,7 +12,7 @@
 
 docker run -it \
 --network=pg_database \
-check_logscript:01 \
+check_logscript:01 \ 
  --user_name=root \
  --password=root \
  --host=pg_database_v02 \
