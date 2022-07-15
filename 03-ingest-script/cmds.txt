@@ -1,0 +1,22 @@
+ python .\check_logfile.py \
+ --user_name root \
+ --password root \ 
+ --host localhost \ 
+ --port 5432 \
+ --db_name dump_data \
+ --table_name taxi_data \
+ --url .\taxi_data.csv
+
+
+ docker build -t check_logscript:01 .
+
+ docker run -it \
+ --network=pg_database \
+check_logscript:01 \
+ --user_name=root \
+ --password=root \
+ --host=localhost \ 
+ --port=5432 \
+ --db_name=taxi_data \
+ --table_name=taxi_data_se \
+ --url="./"
