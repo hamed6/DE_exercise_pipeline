@@ -1,2 +1,7 @@
 *.parquet
 *.csv
+
+*.terraform
+*.terraform.*
+*.tfstate
+*.tfstate.*

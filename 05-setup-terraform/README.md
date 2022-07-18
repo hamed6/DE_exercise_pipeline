@@ -1,0 +1,1 @@
+Local setup for terraform and AWS data processing pipeline
