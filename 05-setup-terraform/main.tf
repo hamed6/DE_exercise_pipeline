@@ -11,7 +11,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_vpc" "vpc_from_terraform" {
-    name="my-vpc-02"
-    cidr_block="10.0.0.0/28"  
+resource "aws_internet_gateway" "gw" {
+    vpc_id = "vpc-0a89240b868bfa1db"
+    
+    tags = {
+      "name" = "macrack-igw-01"
+    }
 }
