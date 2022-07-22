@@ -11,10 +11,15 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_internet_gateway" "gw" {
-    vpc_id = "vpc-0a89240b868bfa1db"
-    
-    tags = {
-      "name" = "macrack-igw-01"
-    }
+resource "aws_s3_bucket" "de-bucket" {
+  bucket = "de-s3-bucket-v01"
+  tags = {
+    "name" = "de-s3"
+  }
 }
+
+resource "aws_s3_bucket_acl" "de-acl" {
+  bucket = aws_s3_bucket.de-bucket.id
+  acl = "private"
+}
+
