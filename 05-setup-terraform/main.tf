@@ -23,3 +23,9 @@ resource "aws_s3_bucket_acl" "de-acl" {
   acl = "private"
 }
 
+resource "aws_redshift_cluster" "de-redshift" {
+  cluster_identifier = "de-redshift-v01"
+  database_name = var.database_credential
+  master_password = var.database_credential
+  
+}

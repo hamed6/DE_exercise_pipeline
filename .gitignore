@@ -1,6 +1,7 @@
 *.parquet
 *.csv
 
+variables.tf
 *.terraform
 *.terraform.*
 *.tfstate
