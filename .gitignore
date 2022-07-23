@@ -1,8 +1,11 @@
 *.parquet
 *.csv
 
-variables.tf
+.ipynb_checkpoints
+
 *.terraform
 *.terraform.*
 *.tfstate
 *.tfstate.*
+
+__pycache__

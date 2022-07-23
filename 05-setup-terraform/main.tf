@@ -11,6 +11,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
+
 resource "aws_s3_bucket" "de-bucket" {
   bucket = "de-s3-bucket-v01"
   tags = {
@@ -24,8 +25,10 @@ resource "aws_s3_bucket_acl" "de-acl" {
 }
 
 resource "aws_redshift_cluster" "de-redshift" {
-  cluster_identifier = "de-redshift-v01"
-  database_name = var.database_credential
-  master_password = var.database_credential
-  
+  cluster_identifier = var.cluster_id
+  database_name = "ny_taxi"
+  master_username = var.database_credential_user
+  master_password = var.database_credential_pass
+  node_type = var.node_type
+  cluster_type = var.cluster_type
 }
