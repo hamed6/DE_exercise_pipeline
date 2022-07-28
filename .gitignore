@@ -8,4 +8,6 @@
 *.tfstate
 *.tfstate.*
 
-__pycache__
+**.env
+**__pycache__
+**logs
