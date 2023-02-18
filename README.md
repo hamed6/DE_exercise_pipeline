@@ -1,1 +1,2 @@
-In this repo I have tried to test and try a few technologies about data engieering. 
+This repo is created to practice required steps to create a data pipeline based on data engineering best 
+practices.
