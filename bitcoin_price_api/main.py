@@ -2,17 +2,15 @@ import requests
 import sqlite3
 from datetime import datetime
 
+"""Call the free api to get bitcoin details"""
 def call_api():
-    """call the free api to get bitcoin details"""
-        
     api_response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
     full_response=api_response.json()
 
     return full_response
 
-
+"""Extract date and rate"""
 def extract_from_api():
-    """extract date and rate"""
     full_response=call_api()
     get_coin_date = full_response['time']['updated']
     get_coin_rate = full_response['bpi']['USD']['rate_float']
@@ -22,10 +20,10 @@ def extract_from_api():
     
     return get_coin_date, get_coin_rate
 
+"""Connect to db and save data"""
 def load_data():
-    """connect to db and save data"""
     get_coin_date,get_coin_rate=extract_from_api() 
-    
+   
     insert_sql=f"INSERT INTO bitcoin_daily_rate VALUES ({get_coin_date}, {get_coin_rate})" 
     con=sqlite3.connect("bicoin_price_db.db")
     cursor=con.cursor()
