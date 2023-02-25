@@ -5,10 +5,7 @@ from typing import Literal, Dict, List, Optional
 
 @dataclass
 class CharacterSchema:
-    # def __init__(self, id: int, name: str, status: str):
-    #     self.id = id
-    #     self.name = name
-    #     self.status = status
+
     id: int
     name: str
     status: Literal ['unknown', 'Alive', 'Dead']
@@ -27,7 +24,10 @@ class InfoSchema:
                  pages: int, 
                  next: Optional[str], 
                  prev: Optional[str] ) -> None:
-        pass
+        self.count = count
+        self.pages = pages
+        self.next = next
+        self.prev = prev
 
 @dataclass
 class ResponseSchema:
@@ -43,6 +43,6 @@ class FilterApi:
     page: Optional[str] = None
     name: Optional[str] = None
     status: Optional[Literal['unknown', 'Alive', 'Dead']] = None
-    species: Optional[str]=None
+    species: Optional[str]= None
     type: Optional[str] = None
     gender: Optional[Literal['female', 'male', 'genderless', 'unknown']] = None
