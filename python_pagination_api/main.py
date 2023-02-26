@@ -1,6 +1,7 @@
+from typing import List
 from data_models import FilterApi, ResponseSchema
 from send_request import get_endpoint_response
-from typing import List
+
 
 endpoint = "Character"
 
@@ -18,7 +19,7 @@ def get_all_pages_results(endpoint: str,
     return list_of_results
 
 
-if __name__ == "__mian__":
+if __name__ == "__main__":
     params = FilterApi()
     response = get_endpoint_response(endpoint, params)
     list_of_results = get_all_pages_results(endpoint, response.info.pages, params)
