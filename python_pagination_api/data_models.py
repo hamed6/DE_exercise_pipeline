@@ -9,7 +9,7 @@ class CharacterSchema:
     id: int
     name: str
     status: Literal ['unknown', 'Alive', 'Dead']
-    speices: str
+    species: str
     type: str
     gender: str
     origin: Dict[str, str]

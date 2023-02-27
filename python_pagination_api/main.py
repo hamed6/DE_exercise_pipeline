@@ -3,7 +3,7 @@ from data_models import FilterApi, ResponseSchema
 from send_request import get_endpoint_response
 
 
-endpoint = "Character"
+endpoint = "character"
 
 def get_all_pages_results(endpoint: str,
                           pages: int, 
