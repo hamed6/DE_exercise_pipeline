@@ -1,3 +1,4 @@
+jupyter nbconvert --to=script 'notebook name'
  python .\check_logfile.py \
  --user_name root \
  --password root \ 
